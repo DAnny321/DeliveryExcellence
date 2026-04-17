@@ -3,5 +3,6 @@
   "country": "us",
   "appFolders": ["CustomerTest"],
   "testFolders": [],
-  "bcptTestFolders": []
+  "bcptTestFolders": [],
+  "CICDPushBranches": [ "main", "release/*", "feature/*", "DEV" ]
 }
