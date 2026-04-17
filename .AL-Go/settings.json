@@ -1,8 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/AL-Go-Actions/v9.0/.Modules/settings.schema.json",
   "country": "us",
-  "appFolders": ["CustomerTest"],
+  "appFolders": [
+    "CustomerTest",
+    "test"
+  ],
   "testFolders": [],
   "bcptTestFolders": [],
-  "CICDPushBranches": [ "main", "release/*", "feature/*", "DEV" ]
+  "CICDPushBranches": [
+    "main",
+    "release/*",
+    "feature/*",
+    "DEV"
+  ]
 }
