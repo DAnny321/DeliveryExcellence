@@ -1,10 +1,10 @@
-{
+{  
   "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
   "name": "CustomerTest",
   "publisher": "DeliveryExcellence",
   "version": "1.0.0.0",
   "brief": "CustomerTest app",
-  "description": "Adds the prova field to the Customer table",
+  "description": "pizza Adds the prova field to the Customer table",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
