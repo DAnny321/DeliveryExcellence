@@ -3,7 +3,8 @@
   "country": "us",
   "appFolders": [
     "CustomerTest",
-    "test"
+    "test",
+    "Management"
   ],
   "testFolders": [],
   "bcptTestFolders": [],
