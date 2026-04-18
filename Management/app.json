@@ -1,0 +1,31 @@
+{
+  "id": "5856b8b0-e952-407c-94d3-739657966c42",
+  "name": "Management",
+  "publisher": "DeliveryExcellence",
+  "version": "1.0.0.0",
+  "brief": "Management app",
+  "description": "Sets APPROVATO in the prova field when the customer description is validated",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "27588e03-a5fa-4a85-ac9b-f4ed517f9873",
+      "name": "CustomerTest",
+      "publisher": "DeliveryExcellence",
+      "version": "1.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "24.0.0.0",
+  "idRanges": [
+    {
+      "from": 50200,
+      "to": 50249
+    }
+  ],
+  "runtime": "16.0"
+}
