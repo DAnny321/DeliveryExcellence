@@ -98,12 +98,11 @@ Il folder `ProductPhotoCapture` è stato aggiunto alla lista `appFolders` per in
 
 ```json
 "appFolders": [
-  "CustomerTest",
-  "test",
-  "Management",
   "ProductPhotoCapture"
 ]
 ```
+
+> **Nota:** Solo `ProductPhotoCapture` è presente in `appFolders`: è l'unica app che verrà deployata nell'ambiente DEV.
 
 ### `al.code-workspace`
 
