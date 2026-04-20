@@ -4,7 +4,8 @@
   "appFolders": [
     "CustomerTest",
     "test",
-    "Management"
+    "Management",
+    "ProductPhotoCapture"
   ],
   "testFolders": [],
   "bcptTestFolders": [],
