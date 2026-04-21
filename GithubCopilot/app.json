@@ -1,0 +1,24 @@
+{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "name": "GithubCopilot",
+  "publisher": "DeliveryExcellence",
+  "version": "1.0.0.0",
+  "brief": "GithubCopilot app",
+  "description": "Extends the Item table with an ATC Name Validated Boolean field that is automatically set to TRUE when the Description (Name) field is validated.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "24.0.0.0",
+  "idRanges": [
+    {
+      "from": 50300,
+      "to": 50349
+    }
+  ],
+  "runtime": "12.0"
+}
