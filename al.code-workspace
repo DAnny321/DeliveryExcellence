@@ -4,7 +4,16 @@
       "path": "apptest"
     },
     {
+      "path": "test"
+    },
+    {
       "path": ".AL-Go"
+    },
+    {
+      "path": "ProductPhotoCapture"
+    },
+    {
+      "path": "GithubCopilot"
     }
   ],
   "settings": {}

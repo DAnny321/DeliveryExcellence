@@ -1,0 +1,24 @@
+{  
+  "id": "27588e03-a5fa-4a85-ac9b-f4ed517f9873",
+  "name": "CustomerTest",
+  "publisher": "DeliveryExcellence",
+  "version": "1.0.0.0",
+  "brief": "CustomerTest app",
+  "description": "pizza Adds the prova field to the Customer table",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "24.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "runtime": "12.0"
+}
