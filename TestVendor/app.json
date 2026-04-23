@@ -1,0 +1,24 @@
+{
+  "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+  "name": "TestVendor",
+  "publisher": "DeliveryExcellence",
+  "version": "1.0.0.0",
+  "brief": "Test vendor app",
+  "description": "Extends the Vendor table (18) with a 'Stato Fornitore' text field automatically set to 'Approvato' when the Name (Description) field is validated.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "24.0.0.0",
+  "idRanges": [
+    {
+      "from": 50350,
+      "to": 50399
+    }
+  ],
+  "runtime": "12.0"
+}
