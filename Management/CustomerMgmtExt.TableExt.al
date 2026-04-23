@@ -2,7 +2,7 @@ tableextension 50200 "Customer Mgmt Ext." extends Customer
 {
     fields
     {
-        modify(Description)
+        modify(Name)
         {
             trigger OnValidate()
             begin
