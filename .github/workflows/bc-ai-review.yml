@@ -1,0 +1,82 @@
+name: BC AI Solution Architect Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "**.al"
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  ai-review:
+    name: AI Solution Architect Review
+    runs-on: ubuntu-latest
+
+    steps:
+      # ----------------------------------------------------------------
+      # 1. Check out the repository being reviewed
+      # ----------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ----------------------------------------------------------------
+      # 2. Python setup with pip cache
+      # ----------------------------------------------------------------
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # ----------------------------------------------------------------
+      # 3. Cache the sentence-transformer model (~90 MB download)
+      # ----------------------------------------------------------------
+      - name: Cache HuggingFace model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: ${{ runner.os }}-hf-all-MiniLM-L6-v2-v1
+
+      # ----------------------------------------------------------------
+      # 4. Install Python dependencies
+      # ----------------------------------------------------------------
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # ----------------------------------------------------------------
+      # 5. Build the AL knowledge base
+      # ----------------------------------------------------------------
+      - name: Build knowledge base
+        run: python scripts/build_knowledge_base.py build
+        env:
+          CHROMA_DB_PATH: /tmp/bc-ai-chroma
+
+      # ----------------------------------------------------------------
+      # 6. Run the AI review and post PR comment
+      #
+      # GITHUB_TOKEN     — auto-provided by Actions (PR write permission
+      #                    granted above via `permissions:`)
+      # LLM_API_KEY      — set this secret to a GitHub PAT or Copilot
+      #                    token with `models:read` scope.
+      #                    Falls back to GITHUB_TOKEN if not set.
+      # ----------------------------------------------------------------
+      - name: Run PR review
+        run: python scripts/review_pr.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
+          CHROMA_DB_PATH: /tmp/bc-ai-chroma
+          # --- Azure OpenAI (recommended) ---
+          LLM_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+          # --- Fallback: GitHub Copilot API (requires LLM_API_KEY with models:read) ---
+          # LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          # LLM_BASE_URL: https://api.githubcopilot.com
+          # LLM_MODEL: gpt-4o
