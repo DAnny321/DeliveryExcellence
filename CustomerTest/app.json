@@ -4,7 +4,7 @@
   "publisher": "DeliveryExcellence",
   "version": "1.0.0.0",
   "brief": "CustomerTest app",
-  "description": "pizza Adds the prova field to the Customer table",
+  "description": "Adds prova and TEST2 fields to the Customer table",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
