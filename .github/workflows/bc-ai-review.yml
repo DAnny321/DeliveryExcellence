@@ -17,12 +17,14 @@ jobs:
 
     steps:
       # ----------------------------------------------------------------
-      # 1. Check out the repository being reviewed
+      # 1. Check out the BC AI Architect agent (this repo)
       # ----------------------------------------------------------------
-      - name: Checkout repository
+      - name: Checkout bc-ai-architet (agent)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          repository: DAnny321/bc-ai-architet
+          path: agent-repo
+          fetch-depth: 1
 
       # ----------------------------------------------------------------
       # 2. Python setup with pip cache
@@ -46,13 +48,13 @@ jobs:
       # 4. Install Python dependencies
       # ----------------------------------------------------------------
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r agent-repo/requirements.txt
 
       # ----------------------------------------------------------------
       # 5. Build the AL knowledge base
       # ----------------------------------------------------------------
       - name: Build knowledge base
-        run: python scripts/build_knowledge_base.py build
+        run: python agent-repo/scripts/build_knowledge_base.py build
         env:
           CHROMA_DB_PATH: /tmp/bc-ai-chroma
 
@@ -61,12 +63,9 @@ jobs:
       #
       # GITHUB_TOKEN     — auto-provided by Actions (PR write permission
       #                    granted above via `permissions:`)
-      # LLM_API_KEY      — set this secret to a GitHub PAT or Copilot
-      #                    token with `models:read` scope.
-      #                    Falls back to GITHUB_TOKEN if not set.
       # ----------------------------------------------------------------
       - name: Run PR review
-        run: python scripts/review_pr.py
+        run: python agent-repo/scripts/review_pr.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
