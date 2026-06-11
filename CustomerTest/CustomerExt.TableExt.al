@@ -7,5 +7,10 @@ tableextension 50100 "Customer Ext." extends Customer
             Caption = 'prova';
             DataClassification = CustomerContent;
         }
+        field(50101; "Office Photo"; Media)
+        {
+            Caption = 'Office Photo';
+            DataClassification = CustomerContent;
+        }
     }
 }
