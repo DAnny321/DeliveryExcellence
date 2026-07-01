@@ -1,0 +1,83 @@
+name: Project Automation
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CONFIGURAZIONE RICHIESTA (una tantum):
+#
+# 1. Crea il GitHub Project v2 "BC Client Portfolio" dalla UI GitHub.
+# 2. Copia l'URL del progetto (es. https://github.com/users/DAnny321/projects/1)
+#    e aggiornalo nella variabile PROJECT_URL sotto.
+# 3. Crea un Personal Access Token (PAT classic) con scope: repo + project
+#    e aggiungilo come secret del repository con nome ADD_TO_PROJECT_PAT.
+#    (Impostazioni repo → Secrets and variables → Actions → New repository secret)
+# ─────────────────────────────────────────────────────────────────────────────
+
+env:
+  PROJECT_URL: "https://github.com/users/DAnny321/projects/1"  # ← aggiorna dopo aver creato il progetto
+
+on:
+  issues:
+    types: [opened, assigned, closed, reopened]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+
+  # ── 1. Aggiungi nuova issue al Project ──────────────────────────────────────
+  add-to-project:
+    name: Add issue to BC Client Portfolio
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - name: Add to project
+        uses: actions/add-to-project@v1.0.2
+        with:
+          project-url: ${{ env.PROJECT_URL }}
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+
+  # ── 2. Status → In Progress quando assegnato ────────────────────────────────
+  set-in-progress:
+    name: Set Status → In Progress
+    runs-on: ubuntu-latest
+    if: github.event.action == 'assigned'
+    steps:
+      - name: Add label status:in-progress via comment
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            // Nota: l'aggiornamento del campo Status nel Project v2 richiede GraphQL
+            // Configura le Automations native nel Project v2 (Settings → Workflows):
+            //   "When issue is assigned → set Status to In Progress"
+            console.log(`Issue #${issue_number} assigned — aggiorna Status nel Project tramite automazione nativa.`);
+
+  # ── 3. Status → Done quando chiusa ──────────────────────────────────────────
+  set-done:
+    name: Set Status → Done
+    runs-on: ubuntu-latest
+    if: github.event.action == 'closed'
+    steps:
+      - name: Log close event
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue_number = context.issue.number;
+            // Configura le Automations native nel Project v2 (Settings → Workflows):
+            //   "When issue is closed → set Status to Done"
+            console.log(`Issue #${issue_number} closed — aggiorna Status nel Project tramite automazione nativa.`);
+
+  # ── 4. Ri-aggiungi al Project se riaperta ────────────────────────────────────
+  reopen-in-project:
+    name: Re-add to project if reopened
+    runs-on: ubuntu-latest
+    if: github.event.action == 'reopened'
+    steps:
+      - name: Add back to project
+        uses: actions/add-to-project@v1.0.2
+        with:
+          project-url: ${{ env.PROJECT_URL }}
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}

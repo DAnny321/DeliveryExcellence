@@ -1,0 +1,90 @@
+name: "📖 User Story"
+description: "Una User Story descrive un requisito funzionale dal punto di vista dell'utente BC."
+title: "[STORY] "
+labels: ["type: story"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📖 User Story
+        Descrive ciò che l'utente vuole fare e perché. Usata sia in modalità Full Scrum che Light.
+
+  - type: input
+    id: client
+    attributes:
+      label: Cliente
+      placeholder: "es. Novomatic"
+    validations:
+      required: true
+
+  - type: input
+    id: feature_ref
+    attributes:
+      label: "Feature parent (es. #15) — lasciare vuoto in modalità Light"
+      placeholder: "#"
+
+  - type: textarea
+    id: story
+    attributes:
+      label: User Story
+      description: "Formato: Come [ruolo], voglio [obiettivo], affinché [beneficio]."
+      placeholder: |
+        **Come** utente Business Central,
+        **voglio** poter filtrare i solleciti per cliente,
+        **affinché** possa gestire in modo efficiente il credito scaduto.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      placeholder: |
+        - [ ] GIVEN ... WHEN ... THEN ...
+        - [ ] GIVEN ... WHEN ... THEN ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: story_points
+    attributes:
+      label: Story Points
+      options:
+        - "1"
+        - "2"
+        - "3"
+        - "5"
+        - "8"
+        - "13"
+        - "21"
+      default: 2
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priorità
+      options:
+        - "🔴 Critical"
+        - "🟠 High"
+        - "🟡 Medium"
+        - "🟢 Low"
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: bc_context
+    attributes:
+      label: Contesto Business Central
+      placeholder: "Area BC coinvolta (Vendite, Acquisti, Finance, Magazzino...), pagine, tabelle..."
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Modalità progetto
+      options:
+        - "Full Scrum"
+        - "Light"
+      default: 0
+    validations:
+      required: true

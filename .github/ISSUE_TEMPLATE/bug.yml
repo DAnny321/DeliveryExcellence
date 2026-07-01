@@ -1,0 +1,96 @@
+name: "🐛 Bug"
+description: "Segnala un bug o un comportamento inatteso in Business Central."
+title: "[BUG] "
+labels: ["type: bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐛 Bug Report
+        Usato sia in modalità Full Scrum che Light. Compila tutti i campi per accelerare la risoluzione.
+
+  - type: input
+    id: client
+    attributes:
+      label: Cliente
+      placeholder: "es. Novomatic"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priorità / Severity
+      options:
+        - "🔴 Critical — blocca la produzione, nessun workaround"
+        - "🟠 High — funzionalità principale compromessa"
+        - "🟡 Medium — workaround disponibile"
+        - "🟢 Low — cosmetico / impatto minore"
+      default: 1
+    validations:
+      required: true
+
+  - type: input
+    id: bc_version
+    attributes:
+      label: Versione Business Central
+      placeholder: "es. BC 24.5 SaaS / BC 23.2 On-Premise"
+    validations:
+      required: true
+
+  - type: input
+    id: app_version
+    attributes:
+      label: Versione app (se applicabile)
+      placeholder: "es. 1.0.0.5"
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Vai alla pagina...
+        2. Inserisci il valore...
+        3. Clicca su...
+        4. Osserva che...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento atteso
+      placeholder: "Cosa dovrebbe succedere..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamento effettivo
+      placeholder: "Cosa succede invece (includi messaggi di errore esatti)..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshot / Log errori
+      placeholder: "Incolla screenshot, messaggi AL error o stack trace..."
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Contesto aggiuntivo
+      placeholder: "Ambiente (PROD/TEST/DEV), utente, permessi, dati di test necessari..."
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Modalità progetto
+      options:
+        - "Full Scrum"
+        - "Light"
+      default: 0
+    validations:
+      required: true

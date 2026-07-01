@@ -1,0 +1,64 @@
+name: "✅ Task"
+description: "Un Task è un'unità di lavoro tecnico, solitamente figlio di una User Story."
+title: "[TASK] "
+labels: ["type: task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✅ Task
+        Un Task rappresenta un'attività tecnica concreta (sviluppo AL, configurazione BC, test, documentazione...).
+
+  - type: input
+    id: client
+    attributes:
+      label: Cliente
+      placeholder: "es. Novomatic"
+    validations:
+      required: true
+
+  - type: input
+    id: story_ref
+    attributes:
+      label: "User Story parent (es. #20)"
+      placeholder: "#"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrizione del lavoro
+      placeholder: "Cosa deve essere fatto in modo preciso..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical_notes
+    attributes:
+      label: Note tecniche
+      placeholder: |
+        - Oggetti AL coinvolti: Codeunit X, Page Y...
+        - Dipendenze da altri task/story: #...
+        - Approccio tecnico suggerito: ...
+
+  - type: dropdown
+    id: estimate
+    attributes:
+      label: Stima
+      options:
+        - "< 1h"
+        - "1–2h"
+        - "2–4h"
+        - "4–8h"
+        - "> 8h (spezzare il task)"
+      default: 1
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Modalità progetto
+      options:
+        - "Full Scrum"
+        - "Light"
+      default: 0
+    validations:
+      required: true

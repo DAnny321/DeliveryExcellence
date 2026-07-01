@@ -1,0 +1,38 @@
+name: Sync Labels
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/labels.yml'
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Dry run (mostra cosa cambierebbe senza applicare)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  issues: write
+
+jobs:
+  sync-labels:
+    name: Sync GitHub Labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync Labels from labels.yml
+        uses: crazy-max/ghaction-github-labeler@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: .github/labels.yml
+          skip-delete: false
+          dry-run: ${{ github.event.inputs.dry-run || 'false' }}
+          exclude: |
+            - *AL-Go*

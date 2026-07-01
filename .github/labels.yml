@@ -1,0 +1,68 @@
+# GitHub Labels — BC Client Portfolio
+# Usato da .github/workflows/sync-labels.yml (crazy-max/ghaction-github-labeler)
+# Aggiungere nuove label client nella sezione CLIENT
+
+# ── TYPE ──────────────────────────────────────────────────────────────────────
+- name: "type: epic"
+  color: "7B2FBE"
+  description: "Epic — obiettivo di alto livello (Full Scrum)"
+
+- name: "type: feature"
+  color: "0075CA"
+  description: "Feature — funzionalità che aggrega User Story (Full Scrum)"
+
+- name: "type: story"
+  color: "008672"
+  description: "User Story — requisito dal punto di vista dell'utente"
+
+- name: "type: task"
+  color: "E4E669"
+  description: "Task — unità di lavoro tecnico"
+
+- name: "type: bug"
+  color: "D73A4A"
+  description: "Bug — comportamento inatteso in BC"
+
+# ── PRIORITY ──────────────────────────────────────────────────────────────────
+- name: "priority: critical"
+  color: "B60205"
+  description: "Blocca la produzione — risoluzione immediata"
+
+- name: "priority: high"
+  color: "E99695"
+  description: "Alta priorità — prossimo sprint"
+
+- name: "priority: medium"
+  color: "FBCA04"
+  description: "Media priorità — backlog pianificato"
+
+- name: "priority: low"
+  color: "C2E0C6"
+  description: "Bassa priorità — nice to have"
+
+# ── MODE ──────────────────────────────────────────────────────────────────────
+- name: "mode: scrum"
+  color: "1D76DB"
+  description: "Struttura Scrum completa (Epic > Feature > Story > Task)"
+
+- name: "mode: light"
+  color: "BFD4F2"
+  description: "Struttura snella — solo Story + Task + Bug"
+
+# ── STATUS EXTRA ──────────────────────────────────────────────────────────────
+- name: "status: blocked"
+  color: "EE0701"
+  description: "Bloccato da impedimento o dipendenza esterna"
+
+- name: "status: needs-info"
+  color: "D4C5F9"
+  description: "In attesa di informazioni dal cliente"
+
+# ── CLIENT — aggiungere una label per ogni cliente ────────────────────────────
+- name: "client: novomatic"
+  color: "F9D0C4"
+  description: "Cliente Novomatic"
+
+# - name: "client: <nome-cliente>"
+#   color: "FEF2C0"
+#   description: "Cliente <Nome>"

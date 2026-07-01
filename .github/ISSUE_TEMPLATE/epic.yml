@@ -1,0 +1,69 @@
+name: "🏔️ Epic"
+description: "Una Epic rappresenta un obiettivo di alto livello che raggruppa più Feature."
+title: "[EPIC] "
+labels: ["type: epic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🏔️ Epic
+        Un'Epic descrive un obiettivo di business di alto livello. Raggruppa più Feature e User Story correlate.
+
+  - type: input
+    id: client
+    attributes:
+      label: Cliente
+      placeholder: "es. Novomatic, ClienteXYZ"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priorità
+      options:
+        - "🔴 Critical"
+        - "🟠 High"
+        - "🟡 Medium"
+        - "🟢 Low"
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Obiettivo di business
+      description: "Cosa si vuole raggiungere con questa Epic?"
+      placeholder: "Descrivi l'obiettivo di business..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope (In-scope & Out-of-scope)
+      placeholder: |
+        **In scope:**
+        - ...
+
+        **Out of scope:**
+        - ...
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Criteri di successo
+      placeholder: "Come misuriamo che l'Epic è completata con successo?"
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Modalità progetto
+      description: "Full Scrum = struttura completa. Light = Story + Task + Bug senza Epic/Feature."
+      options:
+        - "Full Scrum"
+        - "Light"
+      default: 0
+    validations:
+      required: true

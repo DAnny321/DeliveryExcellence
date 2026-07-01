@@ -1,0 +1,74 @@
+name: "✨ Feature"
+description: "Una Feature appartiene a una Epic e raggruppa più User Story correlate."
+title: "[FEATURE] "
+labels: ["type: feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✨ Feature
+        Una Feature è una funzionalità di prodotto che implementa parte di una Epic.
+
+  - type: input
+    id: epic_ref
+    attributes:
+      label: "Epic parent (es. #12)"
+      placeholder: "#"
+
+  - type: input
+    id: client
+    attributes:
+      label: Cliente
+      placeholder: "es. Novomatic"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priorità
+      options:
+        - "🔴 Critical"
+        - "🟠 High"
+        - "🟡 Medium"
+        - "🟢 Low"
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrizione
+      placeholder: "Descrivi la funzionalità in modo chiaro e conciso..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: "Elenca le condizioni che devono essere soddisfatte per considerare la Feature completata."
+      placeholder: |
+        - [ ] Criterio 1
+        - [ ] Criterio 2
+        - [ ] Criterio 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Note tecniche / dipendenze
+      placeholder: "Oggetti BC coinvolti, dipendenze da altre Feature, vincoli..."
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Modalità progetto
+      options:
+        - "Full Scrum"
+        - "Light"
+      default: 0
+    validations:
+      required: true
